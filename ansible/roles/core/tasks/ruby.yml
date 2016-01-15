@@ -1,0 +1,38 @@
+---
+  - name: Install list of dependency packages for Ruby
+    apt: "pkg={{ item }} state=installed update_cache=yes"
+    with_items:
+    - g++
+    - curl
+    - zlib1g-dev
+    - libssl-dev
+    - build-essential
+    - libreadline-dev
+    - libyaml-dev
+    - libxml2-dev
+    - libxslt1-dev
+    - libcurl4-openssl-dev
+    - python-software-properties
+    - libffi-dev
+    - libqtwebkit-dev
+    - qt4-qmake
+    - ghostscript
+  - name: Get currently installed ruby version
+    command: ruby -v
+    register: result
+    ignore_errors: True
+  - name: Download Ruby Source
+    get_url: url=https://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz dest={{ home_dir }}/ruby-2.2.3.tar.gz force=no
+  - name: Install Ruby
+    shell: "{{ item }}"
+    with_items:
+      - cd
+      - cd {{ home_dir }}; tar -xzvf ruby-2.2.3.tar.gz
+      - cd {{ home_dir }}/ruby-2.2.3/; sudo ./configure
+      - cd {{ home_dir }}/ruby-2.2.3/; sudo make
+      - cd {{ home_dir }}/ruby-2.2.3/; sudo make install
+    when: result.rc !=0 or result.stdout.split()[1] != '2.2.3p173'
+  - name: Install bundler
+    shell: "{{ item }}"
+    with_items:
+      - sudo gem install bundler

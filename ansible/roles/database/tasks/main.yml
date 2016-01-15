@@ -1,0 +1,33 @@
+---
+  - name: Install the MySQL packages
+    apt: name={{ item }} state=installed update_cache=yes
+    with_items:
+      - mysql-server-5.6
+      - mysql-client-5.6
+      - python-mysqldb
+      - libmysqlclient-dev
+
+  - name: Copy the configuration file (my.cnf)
+    template: src=my.cnf.j2 dest=/etc/mysql/my.cnf
+    notify:
+      - Restart MySQL
+
+  - name: Copy the root credentials as .my.cnf file
+    template: src=root.cnf.j2 dest=~/.my.cnf mode=0600
+
+  - name: Ensure Anonymous user(s) are not in the database
+    mysql_user: name='' host={{ item }} state=absent
+    with_items:
+      - localhost
+      - "{{ host_name }}"
+
+  - name: Remove the test database
+    mysql_db: name=test state=absent
+    notify:
+      - Restart MySQL
+
+  - name: Create development database
+    mysql_db: name=planner_development state=present login_user=root login_password={{ mysql_root_pass }}
+
+  - name: Create test database
+    mysql_db: name=planner_test state=present login_user=root login_password={{ mysql_root_pass }}

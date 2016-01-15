@@ -1,0 +1,5 @@
+---
+- include: git.yml
+- include: ruby.yml
+- include: locales.yml
+- include: ntp.yml

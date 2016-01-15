@@ -30,7 +30,7 @@ end
 # For locale in the route
 
 gem "daemons"
-gem 'delayed_job' 
+gem 'delayed_job'
 gem 'delayed_job_active_record'
 
 gem "figaro"
@@ -39,12 +39,11 @@ gem 'geocoder'
 gem "select2-rails", '3.5.9.3'
 gem 'country_select', github: 'stefanpenner/country_select'
 
+gem 'planner-core', path: "../planner-core"
+gem 'planner_konopas', path: "../planner_konopas"
 
-# gem 'planner-core', path: "../planner-core"
-# gem 'planner_konopas', path: "../planner_konopas"
-
-gem 'planner-core',     '>=0.1', :git => 'git@github.com:conferenceplan/planner-core.git'
-gem 'planner_konopas',  '>=0.1', :git => 'git@github.com:conferenceplan/planner_konopas.git'
+# gem 'planner-core',     '>=0.1', :git => 'git@github.com:conferenceplan/planner-core.git'
+# gem 'planner_konopas',  '>=0.1', :git => 'git@github.com:conferenceplan/planner_konopas.git'
 
 # Needed for the new asset pipeline
 group :assets do

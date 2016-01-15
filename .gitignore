@@ -37,6 +37,7 @@ config/secrets.yml
 .svn
 .project
 .secret
+.vagrant
 config/database.yml
 log/**/*
 tmp/**/*

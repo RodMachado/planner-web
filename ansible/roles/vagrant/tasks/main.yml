@@ -1,0 +1,4 @@
+- name: Change bash_profile
+  copy: src=.bash_profile dest=/home/vagrant/.bash_profile
+- name: Install xvfb
+  apt: "pkg=xvfb state=installed update_cache=yes"
