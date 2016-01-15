@@ -25,9 +25,3 @@
     mysql_db: name=test state=absent
     notify:
       - Restart MySQL
-
-  - name: Create development database
-    mysql_db: name=planner_development state=present login_user=root login_password={{ mysql_root_pass }}
-
-  - name: Create test database
-    mysql_db: name=planner_test state=present login_user=root login_password={{ mysql_root_pass }}

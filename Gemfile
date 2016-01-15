@@ -32,9 +32,7 @@ end
 gem "daemons"
 gem 'delayed_job'
 gem 'delayed_job_active_record'
-
 gem "figaro"
-
 gem 'geocoder'
 gem "select2-rails", '3.5.9.3'
 gem 'country_select', github: 'stefanpenner/country_select'

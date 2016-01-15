@@ -9,5 +9,3 @@
   vars:
     host_name: 'planner-web'
     user_name: 'vagrant'
-    env: 'development'
-    app_name: 'sac'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151207173522) do
+ActiveRecord::Schema.define(:version => 20160110213808) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -756,6 +756,7 @@ ActiveRecord::Schema.define(:version => 20151207173522) do
     t.integer  "venue_id"
     t.text     "name"
     t.integer  "sort_order",   :default => 0
+    t.integer  "integer",      :default => 0
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
     t.integer  "lock_version", :default => 0
@@ -783,16 +784,18 @@ ActiveRecord::Schema.define(:version => 20151207173522) do
   end
 
   create_table "site_configs", :force => true do |t|
-    t.string   "captcha_pub_key",   :default => ""
-    t.string   "captcha_priv_key",  :default => ""
-    t.datetime "created_at",                                                  :null => false
-    t.datetime "updated_at",                                                  :null => false
-    t.integer  "lock_version",      :default => 0
-    t.string   "name",              :default => ""
-    t.string   "time_zone",         :default => "Eastern Time (US & Canada)"
+    t.string   "captcha_pub_key",       :default => ""
+    t.string   "captcha_priv_key",      :default => ""
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
+    t.integer  "lock_version",          :default => 0
+    t.string   "name",                  :default => ""
+    t.string   "time_zone",             :default => "Eastern Time (US & Canada)"
     t.datetime "start_date"
-    t.integer  "number_of_days",    :default => 1
-    t.string   "print_time_format", :default => "24"
+    t.integer  "number_of_days",        :default => 1
+    t.string   "print_time_format",     :default => "24"
+    t.datetime "public_start_date"
+    t.integer  "public_number_of_days", :default => 1
   end
 
   create_table "survey_answers", :force => true do |t|
@@ -999,9 +1002,10 @@ ActiveRecord::Schema.define(:version => 20151207173522) do
 
   create_table "tag_contexts", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "lock_version", :default => 0
+    t.boolean  "publish",      :default => true
   end
 
   create_table "taggings", :force => true do |t|

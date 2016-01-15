@@ -18,7 +18,6 @@ if User.count == 0
   ], :without_protection => true )
 end
 
-
 if RoleAssignment.count == 0
   RoleAssignment.create([
     { :user_id => 1, :role_id => 2, :created_at => nil, :updated_at => nil, :lock_version => 0 },

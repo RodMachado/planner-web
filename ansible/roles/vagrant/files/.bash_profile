@@ -14,3 +14,5 @@ if [ ! -f /tmp/.X10-lock ]; then
 fi
 
 export DISPLAY=:10
+
+export devise_key='8c46ea8c44439699e46b066d36157cc9e0b239a9d69ce8b18672802b286a0cd01fa783c912fdf490461753a594ac3e129dbbd119163fba56957ab441cab206ad'
