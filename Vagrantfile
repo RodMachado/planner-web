@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Forward the Rails server default port to the host
   config.vm.network :forwarded_port, guest: 3000, host: 3001, auto_correct: true
-  config.vm.network :forwarded_port, guest: 5432, host: 5433, auto_correct: true
+  config.vm.network :forwarded_port, guest: 3306, host: 3306, auto_correct: true
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.

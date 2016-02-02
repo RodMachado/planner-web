@@ -55,3 +55,7 @@ end
 group :development do
   gem 'seed_dump', '0.5.3'
 end
+
+group :test do
+  gem 'test-unit', '~> 3.0'
+end
